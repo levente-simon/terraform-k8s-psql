@@ -1,0 +1,19 @@
+postgresql:
+  replicaCount: %d
+  pgHbaTrustAll: true
+persistence:
+  size: %s
+tls:
+  enabled: true
+  certificatesSecret: "postgresql-tls"
+service:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: %s
+  type: LoadBalancer
+pgpool:
+  tls:
+    enabled: true
+    certificatesSecret: "postgresql-tls"
+    certFilename: "tls.crt"
+    certKeyFilename: "tls.key"
+    # certCAFilename: "ca.crt"
