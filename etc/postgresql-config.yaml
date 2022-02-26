@@ -1,5 +1,6 @@
 postgresql:
   replicaCount: %d
+  password: %s
   pgHbaTrustAll: true
 persistence:
   size: %s

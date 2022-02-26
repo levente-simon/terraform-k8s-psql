@@ -10,10 +10,11 @@ variable "postgresql_replica_count" {
   default = 3
 }
 
-#variable "admin_password" {
-#  type      = string
-#  sensitive = true
-#}
+variable "postgresql_password" {
+  type      = string
+  default   = ""
+  sensitive = true
+}
 
 variable "postgresql_namespace" {
   type    = string

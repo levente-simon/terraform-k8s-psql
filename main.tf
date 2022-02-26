@@ -84,7 +84,17 @@ resource "helm_release" "postgresql" {
   namespace  = var.postgresql_namespace
   values     = [ "${format(file("${path.module}/etc/postgresql-config.yaml"), 
                      var.postgresql_replica_count,
+                     var.postgresql_password,
                      var.postgresql_volume_size,
                      var.postgresql_fqdn)}"
                ]
+}
+
+data "kubernetes_secret" "postgresql" {
+  depends_on = [ helm_release.postgresql ]
+
+  metadata {
+    name      = "postgresql-postgresql-ha-postgresql"
+    namespace = var.postgresql_namespace
+  }
 }
