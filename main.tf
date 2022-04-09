@@ -86,7 +86,9 @@ resource "helm_release" "postgresql" {
                      var.postgresql_replica_count,
                      var.postgresql_password,
                      var.postgresql_volume_size,
-                     var.postgresql_fqdn)}"
+                     var.postgresql_fqdn,
+                     var.pgpool_usernames,
+                     var.pgpool_passwords)}"
                ]
 }
 

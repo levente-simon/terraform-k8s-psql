@@ -12,6 +12,8 @@ service:
     external-dns.alpha.kubernetes.io/hostname: %s
   type: LoadBalancer
 pgpool:
+  usernames: %s
+  passwords: %s
   tls:
     enabled: true
     certificatesSecret: "postgresql-tls"

@@ -21,6 +21,15 @@ variable "postgresql_namespace" {
   default = "postgresql"
 }
 
+variable "pgpool_usernames" {
+  type = string
+  default = ""
+}
+variable "pgpool_passwords" {
+  type = string
+  default = ""
+}
+
 variable "k8s_host" {
   type      = string
   sensitive = true
