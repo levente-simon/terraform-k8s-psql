@@ -71,8 +71,22 @@ resource "kubernetes_manifest" "postgresql_tls" {
   }
 }
 
+resource "kubernetes_secret" "pool_passwd" {
+  metadata {
+    name      = "pool-passwd"
+    namespace = var.postgresql_namespace
+  }
+
+  type = "kubernetes.io/Opaque"
+  data = {
+    "usernames" = ""
+    "passwords" = ""
+  }
+}
+
 resource "helm_release" "postgresql" {
-  depends_on = [ kubernetes_namespace.postgresql ]
+  depends_on = [ kubernetes_namespace.postgresql,
+                 kubernetes_secret.pool_passwd ]
   name       = "postgresql"
 
   lifecycle {
@@ -86,9 +100,7 @@ resource "helm_release" "postgresql" {
                      var.postgresql_replica_count,
                      var.postgresql_password,
                      var.postgresql_volume_size,
-                     var.postgresql_fqdn,
-                     var.pgpool_usernames,
-                     var.pgpool_passwords)}"
+                     var.postgresql_fqdn)}"
                ]
 }
 
