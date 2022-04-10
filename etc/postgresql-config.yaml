@@ -1,5 +1,5 @@
 postgresqlImage:
-  tag: 14.2.0-debian-10-r60
+  tag: 14.2.0-debian-10-r54
 postgresql:
   replicaCount: %d
   password: %s
