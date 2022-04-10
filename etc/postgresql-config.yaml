@@ -1,3 +1,5 @@
+postgresqlImage:
+  tag: 14.2.0-debian-10-r60
 postgresql:
   replicaCount: %d
   password: %s
@@ -11,6 +13,8 @@ service:
   annotations:
     external-dns.alpha.kubernetes.io/hostname: %s
   type: LoadBalancer
+pgpoolImage:
+  tag: 4.3.1-debian-10-r49
 pgpool:
   customUsersSecret: pool-passwd
   tls:
